@@ -102,7 +102,7 @@ module Main : sig end = struct
             | Cstr_tuple (tys) ->
                 let p, args = gentuple env tys in
                 pconstr qc p, selfcall "constr" [str ty; tuple[str c; list args]]
-            | Cstr_record (l) ->
+            | Cstr_record (l, _) ->
                 let l = List.map field l in
                 pconstr qc [Pat.record (List.map fst l) Closed],
                 selfcall "constr" [str ty; tuple [str c;
